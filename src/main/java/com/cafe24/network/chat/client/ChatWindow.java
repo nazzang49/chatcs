@@ -43,7 +43,7 @@ public class ChatWindow {
 		textField = new TextField();
 		textArea = new TextArea(30, 80);
 		
-		frame.setTitle("채팅방");
+		frame.setTitle(this.name+"의 채팅방");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//내장 클래스
 		new ChatClientReceiveThread(this.client).start();
@@ -112,9 +112,9 @@ public class ChatWindow {
 			pw = new PrintWriter(new OutputStreamWriter(client.getOutputStream(), StandardCharsets.UTF_8), true);
 			//엔터키 눌러 입력된 메시지 문자열로 저장
 			String msg = textField.getText();
-			String data = "msg:"+name+"님의 말 - "+msg+"\r\n";
+			String data = "msg:"+msg+"\r\n";
 			pw.println(data);
-
+			
 			//입력 후 다시 빈 입력 창 + 커서 이동
 			textField.setText("");
 			textField.requestFocus();

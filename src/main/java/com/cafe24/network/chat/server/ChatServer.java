@@ -6,19 +6,19 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 //서버 단
 public class ChatServer {
 
 	//IP 및 PORT 정보 입력
 	private static final String HOST_IP = "0.0.0.0";
-	private static final int PORT = 7000;
+	private static final int PORT = 9000;
 	
 	public static void main(String[] args) throws SocketException, IOException {
 		
 		//서버에 접속하는 클라이언트 정보 저장할 리스트 배열
-		ArrayList<PrintWriter> listClients = new ArrayList<>();
+		HashMap<String, PrintWriter> listClients = new HashMap<>();
 		//1) 서버 소켓 생성
 		ServerSocket ss = null;
 		try {

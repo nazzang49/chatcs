@@ -17,7 +17,7 @@ public class ChatClient {
 
 	//상수 선언(대문자 변수명 지정) = 접속할 서버 소켓 정보 
 	private static final String SERVER_IP = "192.168.1.27";
-	private static final int SERVER_PORT = 7000;
+	private static final int SERVER_PORT = 9000;
 	
 	public static void main(String[] args) throws UnknownException {
 
@@ -32,14 +32,19 @@ public class ChatClient {
 			sc = new Scanner(System.in);
 			
 			while(true) {
-				System.out.println("대화명 입력 필수");
+				System.out.println("본인의 닉네임을 정해주세요.");
 				System.out.print(">>");
 				name = sc.nextLine();
 				
 				if(!name.isEmpty()) {
+					//이름에 공백이 존재하면 다시 입력
+					if(name.indexOf(" ")!=-1) {
+						System.out.println("이름은 공백 없이 입력해주세요.");
+						continue;
+					}
 					break;
 				}
-				System.out.println("한글자 이상 입력 필수");
+				System.out.println("최소 한글자 이상 입력하셔야 합니다.");
 			}
 			//키보드 입력 종료
 			sc.close();
