@@ -3,6 +3,9 @@ package com.cafe24.network.chat.server;
 import java.util.Base64;
 import java.util.Base64.Decoder;
 import java.util.Base64.Encoder;
+
+import com.cafe24.network.chat.client.ChatClient;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.io.BufferedReader;
@@ -143,7 +146,7 @@ public class ChatThread extends Thread{
 	private void broadcast(String msg, String nickname) {
 		synchronized (listClients) {
 			for(Map.Entry<String, PrintWriter> entry : listClients.entrySet()) {
-				//본인 채탱창에는 입장 구문 표시 X
+				//본인 채팅창에는 입장 구문 표시 X
 				if(!entry.getKey().equals(nickname)) {
 					entry.getValue().println(msg);	
 				}

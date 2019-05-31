@@ -132,17 +132,20 @@ public class ChatWindow {
 
 		//각 클라이언트 입력 실행
 		public void run() {
-			try {
-				BufferedReader br = new BufferedReader(new InputStreamReader(client.getInputStream(), "utf-8"));
-				while(true) {
-					String msg = br.readLine();
-					//개행설정
-					textArea.append(msg);
-					textArea.append("\n");
+			if(this.client!=null&&!this.client.isClosed()) {
+				System.out.println(this.getName());
+				try {
+					BufferedReader br = new BufferedReader(new InputStreamReader(this.client.getInputStream(), "utf-8"));
+					while(true) {
+						String msg = br.readLine();
+						//개행설정
+						textArea.append(msg);
+						textArea.append("\n");
+					}
 				}
-			}
-			catch (IOException e) {
-				e.printStackTrace();
+				catch (IOException e) {
+					e.printStackTrace();
+				}	
 			}
 		}
 	}
